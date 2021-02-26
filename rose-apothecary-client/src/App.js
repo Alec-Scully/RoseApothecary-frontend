@@ -47,7 +47,16 @@ class App extends Component {
   }
 
   displayGreeting = () => {
-    return <h1>Hi! It's working!</h1>
+    return (
+      <div>
+        <h1>Hi! It's working!</h1>
+        {this.state.loggedIn ? 
+          <h1>Hi {this.state.user.username}!</h1>
+          :
+          null
+        }
+      </div>
+    )
   }
 
   render() {
