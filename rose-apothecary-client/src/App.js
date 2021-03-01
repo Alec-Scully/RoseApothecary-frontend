@@ -22,6 +22,7 @@ class App extends Component {
 
   logOut = () => {
     this.setState({ user: {}, loggedIn: false })
+    localStorage.token = ""
   }
 
   componentDidMount = () => {
