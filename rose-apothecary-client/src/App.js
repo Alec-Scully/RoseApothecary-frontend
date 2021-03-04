@@ -23,7 +23,7 @@ class App extends Component {
     this.setState({
       user: user,
       loggedIn: true,
-      currentCart: user.cart.items
+      currentCart: user.cart
     })
   }
 
@@ -80,30 +80,30 @@ class App extends Component {
 // debugger
     if (this.state.currentCart.includes(item)) {
       // debugger
-      let updateCartItem = this.state.cartItems.find(cartItem => cartItem.cart_id === this.state.user.cart.id && cartItem.item_id === item.id)
-      console.log(updateCartItem.quantity)
-      let updateQuantity = updateCartItem.quantity + 1
+      // let updateCartItem = this.state.cartItems.find(cartItem => cartItem.cart_id === this.state.user.cart.id && cartItem.item_id === item.id)
+      // console.log(updateCartItem.quantity)
+      // let updateQuantity = updateCartItem.quantity + 1
 
-      let sendItem = {
-        "quantity" : updateQuantity
-      }
+      // let sendItem = {
+      //   "quantity" : updateQuantity
+      // }
 
-      console.log("Item already in cart")
+      // console.log("Item already in cart")
 
-      let reqPackage = {}
-        reqPackage.headers = { "Content-Type": "application/json", Authorization: `Bearer ${localStorage.token}` }
-        reqPackage.method = "PATCH"
-        reqPackage.body = JSON.stringify(sendItem)
+      // let reqPackage = {}
+      //   reqPackage.headers = { "Content-Type": "application/json", Authorization: `Bearer ${localStorage.token}` }
+      //   reqPackage.method = "PATCH"
+      //   reqPackage.body = JSON.stringify(sendItem)
 
-      fetch("http://localhost:3000/cart_items/" + updateCartItem.id, reqPackage)
+      // fetch("http://localhost:3000/cart_items/" + updateCartItem.id, reqPackage)
 
     } else {
 
 
       this.setState({currentCart: [...this.state.currentCart, item]})
-      
+      console.log(item)
       let newItem = {
-        cart_id: this.state.user.cart.id,
+        user_id: this.state.user.id,
         item_id: item.id,
         quantity: 1
       }
@@ -114,6 +114,20 @@ class App extends Component {
           reqPackage.body = JSON.stringify(newItem)
 
       fetch("http://localhost:3000/cart_items", reqPackage)
+        .then(res => res.json())
+
+
+
+      let newCart = {
+        cart: this.state.currentCart
+      }
+
+      let reqPackage2 = {}
+      reqPackage2.headers = { "Content-Type": "application/json", Authorization: `Bearer ${localStorage.token}` }
+      reqPackage2.method = "PATCH"
+      reqPackage2.body = JSON.stringify(newCart)
+
+      fetch("http://localhost:3000/users/" + this.state.user.id, reqPackage2)
         .then(res => res.json())
     }    
   }
@@ -168,7 +182,7 @@ class App extends Component {
           <Route exact path="/products/:id">
               <ItemDetail />
           </Route>
-          
+
         </Router>
       </div>
     );

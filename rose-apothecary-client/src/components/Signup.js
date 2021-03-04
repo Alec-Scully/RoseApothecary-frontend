@@ -32,8 +32,10 @@ class Signup extends Component {
         last_name: last_name,
         username: username,
         email: email,
-        password: password
+        password: password,
+        cart: []
     }
+    console.log(user)
 
     fetch("http://localhost:3000/users", {
       method: "POST",
