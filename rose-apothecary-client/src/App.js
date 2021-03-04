@@ -6,17 +6,24 @@ import Signup from "./components/Signup";
 import Login from "./components/Login";
 import Home from "./components/Home";
 import About from "./components/About";
+import Cart from "./components/Cart";
+import ItemDetail from "./components/ItemDetail";
 
 class App extends Component {
   state = {
     user: {},
-    loggedIn: false
+    loggedIn: false,
+    items: [],
+    currentCart: [],
+    cartItems: []
   }
 
   setCurrentUser = (user) => {
+    console.log(user)
     this.setState({
       user: user,
-      loggedIn: true
+      loggedIn: true,
+      currentCart: user.cart.items
     })
   }
 
@@ -32,6 +39,15 @@ class App extends Component {
     } else {
       console.log("No token found, try logging in!")
     }
+
+    fetch("http://localhost:3000/items")
+    .then(res => res.json())
+    .then(itemData => this.setState({items: itemData}))
+
+    fetch("http://localhost:3000/cart_items")
+    .then(res => res.json())
+    .then(cartItemData => this.setState({cartItems: cartItemData}))
+    
   }
 
   tokenLogin = (token) => {
@@ -60,6 +76,60 @@ class App extends Component {
     )
   }
 
+  addToCart = (item) => {
+// debugger
+    if (this.state.currentCart.includes(item)) {
+      // debugger
+      let updateCartItem = this.state.cartItems.find(cartItem => cartItem.cart_id === this.state.user.cart.id && cartItem.item_id === item.id)
+      console.log(updateCartItem.quantity)
+      let updateQuantity = updateCartItem.quantity + 1
+
+      let sendItem = {
+        "quantity" : updateQuantity
+      }
+
+      console.log("Item already in cart")
+
+      let reqPackage = {}
+        reqPackage.headers = { "Content-Type": "application/json", Authorization: `Bearer ${localStorage.token}` }
+        reqPackage.method = "PATCH"
+        reqPackage.body = JSON.stringify(sendItem)
+
+      fetch("http://localhost:3000/cart_items/" + updateCartItem.id, reqPackage)
+
+    } else {
+
+
+      this.setState({currentCart: [...this.state.currentCart, item]})
+      
+      let newItem = {
+        cart_id: this.state.user.cart.id,
+        item_id: item.id,
+        quantity: 1
+      }
+
+      let reqPackage = {}
+          reqPackage.headers = { "Content-Type": "application/json", Authorization: `Bearer ${localStorage.token}` }
+          reqPackage.method = "POST"
+          reqPackage.body = JSON.stringify(newItem)
+
+      fetch("http://localhost:3000/cart_items", reqPackage)
+        .then(res => res.json())
+    }    
+  }
+
+  removeFromCart = (oldItem) => {
+    console.log(oldItem.name + " removed! " + oldItem.id)
+    let newCart = this.state.currentCart.filter(item => item !== oldItem)
+    this.setState({currentCart: newCart})
+    let delCartItem = this.state.cartItems.find(cartItem => cartItem.cart_id === this.state.user.cart.id && cartItem.item_id === oldItem.id)
+
+    fetch("http://localhost:3000/cart_items/" + delCartItem.id, {
+      method: "DELETE"
+    })
+
+  }
+
   render() {
     return (
       <div >
@@ -68,7 +138,7 @@ class App extends Component {
           {this.displayGreeting()}
 
           <Route exact path="/">
-            <Home />
+            <Home addToCart={this.addToCart} items={this.state.items} />
           </Route>
 
           <Route exact path="/about">
@@ -91,6 +161,14 @@ class App extends Component {
               <Signup />}
           </Route>
 
+          <Route exact path="/cart">
+            <Cart removeFromCart={this.removeFromCart} currentCart={this.state.currentCart}/>
+          </Route>
+
+          <Route exact path="/products/:id">
+              <ItemDetail />
+          </Route>
+          
         </Router>
       </div>
     );

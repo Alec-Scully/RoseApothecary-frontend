@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
+import ItemArea from './ItemArea'
 
 class Home extends Component {
 
 
     render() {
         return (
-            <h1> this is the Home</h1>
+            <div>
+                <ItemArea addToCart={this.props.addToCart} items={this.props.items}/>
+            </div>
         )
     }
 }

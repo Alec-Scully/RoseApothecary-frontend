@@ -52,6 +52,16 @@ class Navbar extends React.Component {
             </li>
 
             <li>
+              <NavLink
+                to="/cart"
+                exact
+                // style={inactive}
+                // activeStyle={active}
+                className="nav-links-a"
+              >Cart</NavLink>
+            </li>
+
+            <li>
               {/* Only show this button if there is no user logged in */}
               {this.props.loggedIn ? null :
                 <NavLink
