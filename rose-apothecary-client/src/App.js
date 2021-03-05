@@ -23,12 +23,16 @@ class App extends Component {
     this.setState({
       user: user,
       loggedIn: true,
-      currentCart: user.cart.items
+      currentCart: [...user.cart.items]
     })
   }
 
   logOut = () => {
-    this.setState({ user: {}, loggedIn: false })
+    this.setState({ 
+        user: {}, 
+        loggedIn: false,
+        currentCart: []
+      })
     localStorage.token = ""
   }
 
@@ -77,28 +81,25 @@ class App extends Component {
   }
 
   addToCart = (item) => {
-// debugger
+    // debugger
     if (this.state.currentCart.includes(item)) {
       // debugger
       let updateCartItem = this.state.cartItems.find(cartItem => cartItem.cart_id === this.state.user.cart.id && cartItem.item_id === item.id)
-      console.log(updateCartItem.quantity)
-      let updateQuantity = updateCartItem.quantity + 1
+      console.log(updateCartItem)
+      // let updateQuantity = updateCartItem.quantity + 1
+      console.log("nope")
+      // let sendItem = {
+      //   "quantity" : updateQuantity
+      // }
 
-      let sendItem = {
-        "quantity" : updateQuantity
-      }
+      // let reqPackage = {}
+      //   reqPackage.headers = { "Content-Type": "application/json", Authorization: `Bearer ${localStorage.token}` }
+      //   reqPackage.method = "PATCH"
+      //   reqPackage.body = JSON.stringify(sendItem)
 
-      console.log("Item already in cart")
-
-      let reqPackage = {}
-        reqPackage.headers = { "Content-Type": "application/json", Authorization: `Bearer ${localStorage.token}` }
-        reqPackage.method = "PATCH"
-        reqPackage.body = JSON.stringify(sendItem)
-
-      fetch("http://localhost:3000/cart_items/" + updateCartItem.id, reqPackage)
+      // fetch("http://localhost:3000/cart_items/" + updateCartItem.id, reqPackage)
 
     } else {
-
 
       this.setState({currentCart: [...this.state.currentCart, item]})
       
