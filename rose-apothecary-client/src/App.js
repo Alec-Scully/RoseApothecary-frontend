@@ -81,26 +81,31 @@ class App extends Component {
   }
 
   addToCart = (item) => {
+    let t = this.state.currentCart.map(test => test.name === item.name)
+    console.log(t)
     // debugger
-    if (this.state.currentCart.includes(item)) {
+
+    // if (t[0]) {
+    // if (this.state.currentCart.includes(item)) {
+    if (t.includes(true)) {
       // debugger
       let updateCartItem = this.state.cartItems.find(cartItem => cartItem.cart_id === this.state.user.cart.id && cartItem.item_id === item.id)
-      console.log(updateCartItem)
-      // let updateQuantity = updateCartItem.quantity + 1
-      console.log("nope")
-      // let sendItem = {
-      //   "quantity" : updateQuantity
-      // }
+      let updateQuantity = updateCartItem.quantity += 1
+      console.log("in cart " + updateQuantity)
+      let sendItem = {
+        "quantity" : updateQuantity
+      }
 
-      // let reqPackage = {}
-      //   reqPackage.headers = { "Content-Type": "application/json", Authorization: `Bearer ${localStorage.token}` }
-      //   reqPackage.method = "PATCH"
-      //   reqPackage.body = JSON.stringify(sendItem)
+      let reqPackage = {}
+        reqPackage.headers = { "Content-Type": "application/json", Authorization: `Bearer ${localStorage.token}` }
+        reqPackage.method = "PATCH"
+        reqPackage.body = JSON.stringify(sendItem)
 
-      // fetch("http://localhost:3000/cart_items/" + updateCartItem.id, reqPackage)
+      fetch("http://localhost:3000/cart_items/" + updateCartItem.id, reqPackage)
+      .then(res => res.json())
 
     } else {
-
+      console.log("not in cart")
       this.setState({currentCart: [...this.state.currentCart, item]})
       
       let newItem = {
@@ -116,6 +121,7 @@ class App extends Component {
 
       fetch("http://localhost:3000/cart_items", reqPackage)
         .then(res => res.json())
+        .then(newCartItem => this.setState({cartItems: [...this.state.cartItems, newCartItem]}))
     }    
   }
 
@@ -124,6 +130,8 @@ class App extends Component {
     let newCart = this.state.currentCart.filter(item => item !== oldItem)
     this.setState({currentCart: newCart})
     let delCartItem = this.state.cartItems.find(cartItem => cartItem.cart_id === this.state.user.cart.id && cartItem.item_id === oldItem.id)
+    let newCartItems = this.state.cartItems.filter(cartItem => cartItem !== delCartItem)
+    this.setState({cartItems: newCartItems})
 
     fetch("http://localhost:3000/cart_items/" + delCartItem.id, {
       method: "DELETE"
@@ -163,7 +171,7 @@ class App extends Component {
           </Route>
 
           <Route exact path="/cart">
-            <Cart removeFromCart={this.removeFromCart} currentCart={this.state.currentCart}/>
+            <Cart user={this.state.user} cartItems={this.state.cartItems} removeFromCart={this.removeFromCart} currentCart={this.state.currentCart}/>
           </Route>
 
           <Route exact path="/products/:id">
