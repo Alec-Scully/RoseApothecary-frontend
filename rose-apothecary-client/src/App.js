@@ -147,7 +147,7 @@ class App extends Component {
           {this.displayGreeting()}
 
           <Route exact path="/">
-            <Home addToCart={this.addToCart} items={this.state.items} />
+            <Home loggedIn={this.state.loggedIn} addToCart={this.addToCart} items={this.state.items} />
           </Route>
 
           <Route exact path="/about">
@@ -171,12 +171,10 @@ class App extends Component {
           </Route>
 
           <Route exact path="/cart">
-            <Cart user={this.state.user} cartItems={this.state.cartItems} removeFromCart={this.removeFromCart} currentCart={this.state.currentCart}/>
+            <Cart loggedIn={this.state.loggedIn} user={this.state.user} cartItems={this.state.cartItems} removeFromCart={this.removeFromCart} currentCart={this.state.currentCart}/>
           </Route>
 
-          <Route exact path="/products/:id">
-              <ItemDetail />
-          </Route>
+          <Route path="/item" render={routerProps => <ItemDetail {...routerProps} items={this.state.items}/>}/>
           
         </Router>
       </div>
