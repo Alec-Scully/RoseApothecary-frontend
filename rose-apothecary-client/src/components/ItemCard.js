@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect, Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 // import ItemDetail from './ItemDetail'
 
 class ItemCard extends Component {
@@ -9,7 +9,6 @@ class ItemCard extends Component {
     }
 
     handleAddToCart = () => {
-        console.log(this.props.loggedIn)
         this.props.loggedIn ?
             this.props.addToCart(this.props.item)
             :
@@ -17,9 +16,8 @@ class ItemCard extends Component {
     }
 
     handleClick = () => {
+        this.props.setCurrentItem(this.props.item)
         this.setState({ redirect: true })
-
-        { console.log("Clicked") }
     }
 
     display = () => {
@@ -38,8 +36,6 @@ class ItemCard extends Component {
     render() {
 
         return (
-            // <Redirect to={`item/${this.props.item.id}`}>
-            // <Redirect to="/about">
             this.state.redirect ? 
                 <Redirect to={`item/${this.props.item.id}`}/>
             :

@@ -15,7 +15,9 @@ class App extends Component {
     loggedIn: false,
     items: [],
     currentCart: [],
-    cartItems: []
+    cartItems: [],
+    itemDetail: "",
+    currentItem: {}
   }
 
   setCurrentUser = (user) => {
@@ -28,11 +30,11 @@ class App extends Component {
   }
 
   logOut = () => {
-    this.setState({ 
-        user: {}, 
-        loggedIn: false,
-        currentCart: []
-      })
+    this.setState({
+      user: {},
+      loggedIn: false,
+      currentCart: []
+    })
     localStorage.token = ""
   }
 
@@ -45,13 +47,13 @@ class App extends Component {
     }
 
     fetch("http://localhost:3000/items")
-    .then(res => res.json())
-    .then(itemData => this.setState({items: itemData}))
+      .then(res => res.json())
+      .then(itemData => this.setState({ items: itemData }))
 
     fetch("http://localhost:3000/cart_items")
-    .then(res => res.json())
-    .then(cartItemData => this.setState({cartItems: cartItemData}))
-    
+      .then(res => res.json())
+      .then(cartItemData => this.setState({ cartItems: cartItemData }))
+
   }
 
   tokenLogin = (token) => {
@@ -59,19 +61,19 @@ class App extends Component {
       method: "POST",
       headers: {
         Accept: "application/json",
-        "Content-Type" : "application/json"
+        "Content-Type": "application/json"
       },
       body: JSON.stringify({ token: token })
     })
-      .then( res => res.json())
-      .then( user => this.setCurrentUser(user))
+      .then(res => res.json())
+      .then(user => this.setCurrentUser(user))
   }
 
   displayGreeting = () => {
     return (
       <div>
         <h1>Hi! It's working!</h1>
-        {this.state.loggedIn ? 
+        {this.state.loggedIn ?
           <h1>Hi {this.state.user.username}!</h1>
           :
           null
@@ -93,21 +95,21 @@ class App extends Component {
       let updateQuantity = updateCartItem.quantity += 1
       console.log("in cart " + updateQuantity)
       let sendItem = {
-        "quantity" : updateQuantity
+        "quantity": updateQuantity
       }
 
       let reqPackage = {}
-        reqPackage.headers = { "Content-Type": "application/json", Authorization: `Bearer ${localStorage.token}` }
-        reqPackage.method = "PATCH"
-        reqPackage.body = JSON.stringify(sendItem)
+      reqPackage.headers = { "Content-Type": "application/json", Authorization: `Bearer ${localStorage.token}` }
+      reqPackage.method = "PATCH"
+      reqPackage.body = JSON.stringify(sendItem)
 
       fetch("http://localhost:3000/cart_items/" + updateCartItem.id, reqPackage)
-      .then(res => res.json())
+        .then(res => res.json())
 
     } else {
       console.log("not in cart")
-      this.setState({currentCart: [...this.state.currentCart, item]})
-      
+      this.setState({ currentCart: [...this.state.currentCart, item] })
+
       let newItem = {
         cart_id: this.state.user.cart.id,
         item_id: item.id,
@@ -115,23 +117,24 @@ class App extends Component {
       }
 
       let reqPackage = {}
-          reqPackage.headers = { "Content-Type": "application/json", Authorization: `Bearer ${localStorage.token}` }
-          reqPackage.method = "POST"
-          reqPackage.body = JSON.stringify(newItem)
+      reqPackage.headers = { "Content-Type": "application/json", Authorization: `Bearer ${localStorage.token}` }
+      reqPackage.method = "POST"
+      reqPackage.body = JSON.stringify(newItem)
 
       fetch("http://localhost:3000/cart_items", reqPackage)
         .then(res => res.json())
-        .then(newCartItem => this.setState({cartItems: [...this.state.cartItems, newCartItem]}))
-    }    
+        .then(newCartItem => this.setState({ cartItems: [...this.state.cartItems, newCartItem] }))
+    }
+    <Redirect to={"/cart"} />
   }
 
   removeFromCart = (oldItem) => {
     console.log(oldItem.name + " removed! " + oldItem.id)
     let newCart = this.state.currentCart.filter(item => item !== oldItem)
-    this.setState({currentCart: newCart})
+    this.setState({ currentCart: newCart })
     let delCartItem = this.state.cartItems.find(cartItem => cartItem.cart_id === this.state.user.cart.id && cartItem.item_id === oldItem.id)
     let newCartItems = this.state.cartItems.filter(cartItem => cartItem !== delCartItem)
-    this.setState({cartItems: newCartItems})
+    this.setState({ cartItems: newCartItems })
 
     fetch("http://localhost:3000/cart_items/" + delCartItem.id, {
       method: "DELETE"
@@ -139,15 +142,21 @@ class App extends Component {
 
   }
 
+  setCurrentItem = (item) => {
+    this.setState({ currentItem: item })
+  }
+
   render() {
     return (
       <div >
+        <img className="logo" src="https://i.imgur.com/gfRehn8.jpg" alt="Rose Apothecary Logo" width="500" />
+        <div className="background-image"></div>
         <Router>
-          <Navbar logOut={this.logOut} loggedIn={this.state.loggedIn}/>
+          <Navbar logOut={this.logOut} loggedIn={this.state.loggedIn} />
           {this.displayGreeting()}
 
           <Route exact path="/">
-            <Home loggedIn={this.state.loggedIn} addToCart={this.addToCart} items={this.state.items} />
+            <Home setCurrentItem={this.setCurrentItem} loggedIn={this.state.loggedIn} addToCart={this.addToCart} items={this.state.items} />
           </Route>
 
           <Route exact path="/about">
@@ -171,11 +180,11 @@ class App extends Component {
           </Route>
 
           <Route exact path="/cart">
-            <Cart loggedIn={this.state.loggedIn} user={this.state.user} cartItems={this.state.cartItems} removeFromCart={this.removeFromCart} currentCart={this.state.currentCart}/>
+            <Cart loggedIn={this.state.loggedIn} user={this.state.user} cartItems={this.state.cartItems} removeFromCart={this.removeFromCart} currentCart={this.state.currentCart} />
           </Route>
 
-          <Route path="/item" render={routerProps => <ItemDetail {...routerProps} items={this.state.items}/>}/>
-          
+          <Route path="/item" render={routerProps => <ItemDetail {...routerProps} item={this.state.currentItem} addToCart={this.addToCart} loggedIn={this.state.loggedIn} />} />
+
         </Router>
       </div>
     );
