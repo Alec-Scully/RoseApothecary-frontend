@@ -7,7 +7,7 @@ class Home extends Component {
     render() {
         return (
             <div>
-                <ItemArea addToCart={this.props.addToCart} items={this.props.items}/>
+                <ItemArea setCurrentItem={this.props.setCurrentItem} loggedIn={this.props.loggedIn} addToCart={this.props.addToCart} items={this.props.items}/>
             </div>
         )
     }

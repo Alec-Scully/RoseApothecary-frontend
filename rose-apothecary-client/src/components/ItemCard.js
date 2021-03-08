@@ -1,20 +1,47 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 // import ItemDetail from './ItemDetail'
 
 class ItemCard extends Component {
 
+    state = {
+        redirect: false
+    }
+
+    handleAddToCart = () => {
+        this.props.loggedIn ?
+            this.props.addToCart(this.props.item)
+            :
+            alert("Please log in or sign up to add to your cart!")
+    }
+
+    handleClick = () => {
+        this.props.setCurrentItem(this.props.item)
+        this.setState({ redirect: true })
+    }
+
+    display = () => {
+        return (
+        <div className="card" >
+            <div onClick={() => this.handleClick()}>
+                <img src={this.props.item.image} alt={this.props.item.name + "image"} className="item-image" />
+                <br/><br/>
+                <h2>{this.props.item.name}</h2>
+                <br/>
+                <h3>{"$" + this.props.item.cost}</h3>
+            </div>
+            <button className="item-button" onClick={() => this.handleAddToCart()}>Add to Cart</button>
+        </div>
+        )
+    }
+
     render() {
 
-        return(
-            <div className="card" >
-                <div onClick={() => <Redirect to={`/products/${this.props.item.id}`}/>}>
-                    <img src={this.props.item.image} alt={this.props.item.name + "image"} className="item-image"/>
-                    <h2>{this.props.item.name}</h2>
-                    <h4>{"$" + this.props.item.cost}</h4>
-                </div>
-                <button onClick={() => this.props.addToCart(this.props.item)}>Add to Cart</button>
-            </div>
+        return (
+            this.state.redirect ? 
+                <Redirect to={`item/${this.props.item.id}`}/>
+            :
+                this.display()
         )
     }
 }
