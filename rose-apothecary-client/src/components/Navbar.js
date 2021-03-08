@@ -8,7 +8,7 @@ class Navbar extends React.Component {
       <div className="sticky-nav">
         <nav >
           <ul className="nav-links">
-            <li >
+            <li>
               <NavLink
                 to="/"
                 exact
@@ -17,7 +17,9 @@ class Navbar extends React.Component {
               >Home</NavLink>
             </li>
 
-            <li className="right">
+            <div className="split" />
+
+            <li>
               <NavLink
                 to="/about"
                 exact
@@ -26,7 +28,9 @@ class Navbar extends React.Component {
               >About</NavLink>
             </li>
 
-            <li className="right">
+            <div className="split" />
+
+            <li>
               <NavLink
                 to="/cart"
                 exact
@@ -36,7 +40,13 @@ class Navbar extends React.Component {
             </li>
 
             {this.props.loggedIn ? null :
-              <li className="right">
+              <div className="split" />
+            }
+
+            {this.props.loggedIn ?
+              <div className="split" />
+              :
+              <li>
                 {/* Only show this button if there is no user logged in */}
                 <NavLink
                   to="/login"
@@ -46,9 +56,13 @@ class Navbar extends React.Component {
                 >Login</NavLink>
               </li>
             }
+            
+            {this.props.loggedIn ? null :
+              <div className="split" />
+            }
 
             {this.props.loggedIn ? null :
-              <li className="right">
+              <li>
                 {/* Only show this button if there is no user logged in */}
                 <NavLink
                   to="/signup"
@@ -60,7 +74,7 @@ class Navbar extends React.Component {
             }
 
             {this.props.loggedIn ?
-              <li className="right">
+              <li>
                 {/* Only show this button if there is no user logged in */}
                 <NavLink
                   onClick={() => this.props.logOut()}

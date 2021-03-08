@@ -49,17 +49,14 @@ nav{
   list-style: none;
 }
 
-.left {
-  border-right:1px solid #FFF;
-}
-
-.right {
-  border-left:1px solid #FFF;
+.split {
+  border-right: solid #FFF;
 }
 
 .nav-links-a:hover {
-    background-color: white;
-    color: black;
+  background-color: white;
+  color: black;
+  transition-duration: 0.4s;
 }
 
 .nav-links-a {
@@ -86,13 +83,30 @@ nav{
 
 .card {
   text-align: center;
-  border: grey solid 1px;
+  /* border: grey solid 1px; */
   padding: 1rem;
-  width: 20rem;
+  width: 25rem;
   height: 25rem;
   display: inline-grid;
   margin: 1rem 2rem;
-  box-shadow: 3px 4px 
+  /* box-shadow: 3px 4px; */
+}
+
+.card button {
+  background-color: white;
+  color: black;
+  font-family: Verdana;
+  font-size: 18px;
+  border-radius : 8px;
+  font-weight: bold;
+  /* text-transform: uppercase; */
+  transition-duration: 0.4s;
+  height: 40px;
+}
+
+.item-button:hover{
+  background-color: black;
+  color: white;
 }
 
 .item-image {
@@ -118,4 +132,9 @@ nav{
   height: 30px;
   padding: 10px;
   border-bottom: 5px black;
+}
+
+.item-area {
+  padding-right: 30px;
+  padding-left: 30px;
 }

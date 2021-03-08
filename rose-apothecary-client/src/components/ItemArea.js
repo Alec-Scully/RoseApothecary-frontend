@@ -6,7 +6,7 @@ class ItemArea extends Component{
     render(){
     
         return(
-            <div>
+            <div className="item-area">
                 {this.props.items.map((item) => <ItemCard setCurrentItem={this.props.setCurrentItem} loggedIn={this.props.loggedIn} addToCart={this.props.addToCart} key={item.id} item={item}/>)}
             </div>
         )
