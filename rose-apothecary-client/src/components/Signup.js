@@ -54,36 +54,38 @@ class Signup extends Component {
 
   render() {
     return (
-      <div>
+      <div className="signup-area">
         {this.state.created ? (
           <Redirect to="/login" />
         ) : (
-            <div>
+            <div className="signup-container">
               <div><p>{this.state.errorMessage}</p></div>
-              <form onSubmit={this.createUser}>
-                <h1>Sign Up</h1>
-                <div>
-                  <input onChange={this.handleChange} type="text" name="first_name" placeholder="First Name" />
-                </div>
-                <br/>
-                <div>
-                  <input onChange={this.handleChange} type="text" name="last_name" placeholder="Last Name" />
-                </div>
-                <br/>
-                <div>
-                  <input onChange={this.handleChange} type="text" name="email" placeholder="Email" />
-                </div>
-                <br/>
-                <div>
-                  <input onChange={this.handleChange} type="text" name="username" placeholder="Username" />
-                </div>
-                <br/>
-                <div>
-                  <input onChange={this.handleChange} type="password" name="password" placeholder="Password" />
-                </div>
-                <br/>
-                <input type="submit" value="Sign Up" />
-              </form>
+              <div className="signup-card">
+                <form className="signup-form" onSubmit={this.createUser}>
+                  <h1>Sign Up</h1>
+                  <div>
+                    <input onChange={this.handleChange} type="text" name="first_name" placeholder="First Name" />
+                  </div>
+                  <br/>
+                  <div>
+                    <input onChange={this.handleChange} type="text" name="last_name" placeholder="Last Name" />
+                  </div>
+                  <br/>
+                  <div>
+                    <input onChange={this.handleChange} type="text" name="email" placeholder="Email" />
+                  </div>
+                  <br/>
+                  <div>
+                    <input onChange={this.handleChange} type="text" name="username" placeholder="Username" />
+                  </div>
+                  <br/>
+                  <div>
+                    <input onChange={this.handleChange} type="password" name="password" placeholder="Password" />
+                  </div>
+                  <br/>
+                  <input type="submit" value="Sign Up" />
+                </form>
+              </div>
             </div>
           )}
       </div>

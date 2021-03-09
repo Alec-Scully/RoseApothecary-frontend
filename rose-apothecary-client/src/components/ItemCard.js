@@ -20,28 +20,22 @@ class ItemCard extends Component {
         this.setState({ redirect: true })
     }
 
-    display = () => {
-        return (
-        <div className="card" >
-            <div onClick={() => this.handleClick()}>
-                <img src={this.props.item.image} alt={this.props.item.name + "image"} className="item-image" />
-                <br/><br/>
-                <h2>{this.props.item.name}</h2>
-                <br/>
-                <h3>{"$" + this.props.item.cost}</h3>
-            </div>
-            <button className="item-button" onClick={() => this.handleAddToCart()}>Add to Cart</button>
-        </div>
-        )
-    }
-
     render() {
 
         return (
-            this.state.redirect ? 
-                <Redirect to={`item/${this.props.item.id}`}/>
-            :
-                this.display()
+            this.state.redirect ?
+                <Redirect to={`item/${this.props.item.id}`} />
+                :
+                <div className="card" >
+                    <div onClick={() => this.handleClick()}>
+                        <img src={this.props.item.image} alt={this.props.item.name + "image"} className="item-image" />
+                        <br /><br />
+                        <h2>{this.props.item.name}</h2>
+                        <br />
+                        <h3>{"$" + this.props.item.cost}</h3>
+                    </div>
+                    <button className="item-button" onClick={() => this.handleAddToCart()}>Add to Cart</button>
+                </div>
         )
     }
 }

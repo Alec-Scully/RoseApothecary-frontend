@@ -9,11 +9,11 @@ class Cart extends Component {
         return(
             <div>
                 {this.props.loggedIn ?
-                    this.props.currentCart.map(item => <CartItem user={this.props.user} cartItems={this.props.cartItems} removeFromCart={this.props.removeFromCart} key={item.id} item={item}/>)
+                    this.props.currentCart.map(item => <CartItem setCurrentItem={this.props.setCurrentItem} user={this.props.user} cartItems={this.props.cartItems} removeFromCart={this.props.removeFromCart} key={item.id} item={item}/>)
                 :
                     (
                         alert("Please log in or sign up to see your cart"),
-                        <Redirect to="/"/>
+                        <Redirect to="/login"/>
                     )
                 }   
             </div>
