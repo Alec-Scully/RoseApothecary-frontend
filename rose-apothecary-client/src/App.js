@@ -71,10 +71,9 @@ class App extends Component {
 
   displayGreeting = () => {
     return (
-      <div>
-        <h1>Hi! It's working!</h1>
+      <div className="greeting">
         {this.state.loggedIn ?
-          <h1>Hi {this.state.user.username}!</h1>
+          <h3>Welcome back, {this.state.user.username}!</h3>
           :
           null
         }
@@ -149,7 +148,7 @@ class App extends Component {
   render() {
     return (
       <div >
-        <img className="logo" src="https://i.imgur.com/gfRehn8.jpg" alt="Rose Apothecary Logo" width="500" />
+        <img className="logo" src="https://i.imgur.com/eaqGD3H.jpg" alt="Rose Apothecary Logo" width="500" />
         <div className="background-image"></div>
         <Router>
           <Navbar logOut={this.logOut} loggedIn={this.state.loggedIn} />
@@ -180,12 +179,15 @@ class App extends Component {
           </Route>
 
           <Route exact path="/cart">
-            <Cart loggedIn={this.state.loggedIn} user={this.state.user} cartItems={this.state.cartItems} removeFromCart={this.removeFromCart} currentCart={this.state.currentCart} />
+            <Cart setCurrentItem={this.setCurrentItem} loggedIn={this.state.loggedIn} user={this.state.user} cartItems={this.state.cartItems} removeFromCart={this.removeFromCart} currentCart={this.state.currentCart} />
           </Route>
 
           <Route path="/item" render={routerProps => <ItemDetail {...routerProps} item={this.state.currentItem} addToCart={this.addToCart} loggedIn={this.state.loggedIn} />} />
 
         </Router>
+        <div className="footer">
+              <p>this is my footer</p>
+        </div>
       </div>
     );
   }

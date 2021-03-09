@@ -18,7 +18,12 @@ code {
   box-sizing: border-box;
 }
 
-nav{
+.greeting {
+  font-family: 'verdana';
+  text-align: center;
+}
+
+nav {
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -28,7 +33,7 @@ nav{
   font-family: 'verdana';
 }
 
-.logo{
+.logo {
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -39,13 +44,13 @@ nav{
   top: 0;
 }
 
-.nav-links{
+.nav-links {
   display: flex;
   justify-content: space-around;
   width: 45%;
 }
 
-.nav-links li{
+.nav-links li {
   list-style: none;
 }
 
@@ -82,14 +87,15 @@ nav{
 }
 
 .card {
-  text-align: center;
-  /* border: grey solid 1px; */
+  /* box-sizing: border-box; */
+  /* text-align: center; */
   padding: 1rem;
-  width: 25rem;
+  width: 20rem;
   height: 25rem;
-  display: inline-grid;
+  display: inline-block;
   margin: 1rem 2rem;
-  /* box-shadow: 3px 4px; */
+  /* border: grey solid 1px;
+  box-shadow: 3px 4px; */
 }
 
 .card button {
@@ -102,9 +108,10 @@ nav{
   /* text-transform: uppercase; */
   transition-duration: 0.4s;
   height: 40px;
+  width: 100%;
 }
 
-.item-button:hover{
+.item-button:hover {
   background-color: black;
   color: white;
 }
@@ -113,6 +120,7 @@ nav{
   justify-self: center;
   height: 12rem;
   width: auto;
+  border-radius : 8px;
 }
 
 .show {
@@ -135,6 +143,97 @@ nav{
 }
 
 .item-area {
+  width: 100%;
   padding-right: 30px;
   padding-left: 30px;
+  text-align: center;
+}
+
+.signup-form {
+  /* width: 50%;
+  height: 100%; */
+  float: left;
+}
+
+.signup-image {
+  float: right;
+  border-radius: 9%;
+  width: 50%;
+}
+
+.signup-card {
+  width: 35%;
+  height: 25rem;
+  display: block;
+  margin: 1rem 2rem;
+  border: grey solid 1px;
+  box-shadow: 3px 4px;
+  border-radius: 8px;
+  text-align: center;
+  background-color: white;
+}
+
+.signup-container {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 3rem;
+  font-family: Verdana;
+  background-image: url(https://i.imgur.com/WuHQzJ4.png);
+  background-size:cover;
+  background-repeat: no-repeat;
+  margin: 0;
+  height: 100vh;
+  width: 100vw;
+}
+
+.signup-area {
+  text-align: center;
+  align-items: center;
+}
+
+form {
+  display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+
+}
+
+.login-container {
+  background-image: url(https://i.imgur.com/c2CnEx7.png);
+  background-size:cover;
+  background-repeat: no-repeat;
+  margin: 0;
+  height: 100vh;
+  width: 100vw;
+}
+
+.login-card {
+  box-sizing: border-box;
+  text-align: center;
+  padding: 1rem;
+  width: 20rem;
+  height: 25rem;
+  display: inline-block;
+  margin: 1rem 2rem;
+  border: grey solid 1px;
+  box-shadow: 3px 4px;
+  background-color: white;
+  border-radius: 8px;
+  position: relative;
+  top: 9rem;
+  left: 10rem;
+}
+
+.footer {
+  position: relative;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: black;
+  color: white;
+  text-align: center;
+  align-items: center;
+  min-height: 8vh;
+  font-family: 'verdana';
 }
