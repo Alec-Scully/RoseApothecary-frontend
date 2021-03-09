@@ -23,6 +23,10 @@ code {
   text-align: center;
 }
 
+
+
+/* ************* NavBar Styling ************* */
+
 nav {
   display: flex;
   justify-content: space-around;
@@ -42,6 +46,8 @@ nav {
 .sticky-nav {
   position: sticky;
   top: 0;
+  z-index: 1000;
+
 }
 
 .nav-links {
@@ -86,12 +92,20 @@ nav {
   color: white;
 }
 
+/* ****************************************** */
+
+
+
+
+/* *********** Item Card Styling ************ */
+
 .card {
   padding: 1rem;
   width: 20rem;
   height: 25rem;
   display: inline-block;
   margin: 1rem 2rem;
+  cursor: pointer;
   /* border: grey solid 1px;
   box-shadow: 3px 4px; */
 }
@@ -125,16 +139,7 @@ nav {
   height: 3rem;
 }
 
-.show {
-
-}
-
-.detailImg {
-  border-radius : 8px;
-  max-width: 50%;
-}
-
-.background-image {
+.rose-border {
   background-image: url(https://i.imgur.com/ks3flCH.jpg);
   background-size: contain;
   background-repeat: repeat-x;
@@ -150,14 +155,28 @@ nav {
   padding-left: 30px;
   text-align: center;
 }
+/* ****************************************** */
 
-form {
-  display: inline-block;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: left;
-  
+
+
+
+/* ********* Item Show Page Styling ********* */
+
+.show {
+
 }
+
+.detail-img {
+  border-radius : 8px;
+  max-width: 50%;
+}
+
+/* ****************************************** */
+
+
+
+
+/* ************* Login Styling ************** */
 
 .login-container {
   background-image: url(https://i.imgur.com/c2CnEx7.png);
@@ -217,9 +236,16 @@ form {
   opacity: 0.8;
 }
 
+/* ****************************************** */
+
+
+
+
+/* ************* Signup Styling ************* */
+
 .signup-container {
   background-image: url(https://i.imgur.com/WuHQzJ4.png);
-  background-size:cover;
+  background-size: cover;
   background-repeat: no-repeat;
   height: 100vh;
   width: 100vw;
@@ -239,7 +265,6 @@ form {
   background-color: white;
   border-radius: 8px;
   font-family: Verdana;
-  
 }
 
 .signup-form-field {
@@ -272,6 +297,79 @@ form {
 .signup-card h1 {
   text-align: center;
 }
+
+/* ****************************************** */
+
+
+
+
+/* ************** Cart Styling ************** */
+
+.cart-title {
+  padding: 2rem;
+}
+
+.cart-card {
+  padding: 1rem;
+  width: 96.5%;
+  height: 14rem;
+  display: inline-block;
+  margin: 1rem 2rem;
+  border: grey solid 1px;
+  box-shadow: 3px 4px;
+}
+
+.cart-item-name {
+  position: relative;
+  top: -155px;
+  left: 20%;
+  font-family: Verdana;
+}
+
+.cart-link {
+  cursor: pointer;
+}
+
+.cart-cost {
+  position: relative;
+  top: -155px;
+  left: 90%;
+  font-family: Verdana;
+}
+
+.cart-card button {
+  position: relative;
+  top: -175px;
+  left: 28%;
+  font-family: Verdana;
+  background-color: white;
+  color: black;
+  font-family: Verdana;
+  font-size: 16px;
+  border-radius : 8px;
+  font-weight: bold;
+  /* text-transform: uppercase; */
+  transition-duration: 0.4s;
+}
+
+.cart-quantity {
+  position: relative;
+  top: -155px;
+  left: 20%;
+  font-family: Verdana;
+}
+
+.cart-total {
+  position: relative;
+  bottom: 40px;
+  left: 84%;
+  font-family: Verdana;
+}
+
+/* ****************************************** */
+
+
+
 
 .footer {
   position: relative;

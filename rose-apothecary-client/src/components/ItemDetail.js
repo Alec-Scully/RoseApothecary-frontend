@@ -21,7 +21,7 @@ class ItemDetail extends Component {
             <div>
                 <div className="show">
                     <div >
-                        <img className="detailImg" src={this.props.item.image} alt={this.props.item.name + "image"} />
+                        <img className="detail-img" src={this.props.item.image} alt={this.props.item.name + "image"} />
                         <h1>{this.props.item.name}</h1>
                         <h2>{"$" + this.props.item.cost}</h2>
                         <h4>Category:</h4>

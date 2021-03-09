@@ -82,7 +82,6 @@ class Signup extends Component {
                   <input className="signup-form-submit" type="submit" value="Sign Up" />
                 </form>
                 <br />
-                <br />
                 <p>Already signed up? <Link to="/login">Please log in!</Link></p>
               </div>
             </div>

@@ -10,7 +10,7 @@ class CartItem extends Component {
     
     quantity = () => {
         let updateCartItem = this.props.cartItems.find(cartItem => cartItem.cart_id === this.props.user.cart.id && cartItem.item_id === this.props.item.id)
-        return <h4>Quantity: {updateCartItem.quantity}</h4>
+        return <h4 className="cart-quantity">Quantity: {updateCartItem.quantity}</h4>
     }
 
     handleClick = () => {
@@ -24,13 +24,11 @@ class CartItem extends Component {
             this.state.redirect ?
                 <Redirect to={`item/${this.props.item.id}`} />
                 :
-            <div className="card" >
-                <div onClick={() => this.handleClick()}>
-                    <img src={this.props.item.image} alt={this.props.item.name + "image"} className="item-image"/>
-                    <h2 className="item-name">{this.props.item.name}</h2>
-                    <h4>{"$" + this.props.item.cost}</h4>
+            <div className="cart-card" >
+                    <img className="cart-link item-image" onClick={() => this.handleClick()} src={this.props.item.image} alt={this.props.item.name + "image"} />
+                    <h2 className="cart-link cart-item-name" onClick={() => this.handleClick()}>{this.props.item.name}</h2>
+                    <h3 className="cart-cost">{"$" + this.props.item.cost}</h3>
                     {this.quantity()}
-                </div>
                 <button className="item-button" onClick={() => this.props.removeFromCart(this.props.item)}>Remove from Cart</button>
             </div>
         )

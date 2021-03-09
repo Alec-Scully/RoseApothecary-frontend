@@ -83,16 +83,10 @@ class App extends Component {
 
   addToCart = (item) => {
     let t = this.state.currentCart.map(test => test.name === item.name)
-    console.log(t)
-    // debugger
 
-    // if (t[0]) {
-    // if (this.state.currentCart.includes(item)) {
     if (t.includes(true)) {
-      // debugger
       let updateCartItem = this.state.cartItems.find(cartItem => cartItem.cart_id === this.state.user.cart.id && cartItem.item_id === item.id)
       let updateQuantity = updateCartItem.quantity += 1
-      console.log("in cart " + updateQuantity)
       let sendItem = {
         "quantity": updateQuantity
       }
@@ -106,7 +100,6 @@ class App extends Component {
         .then(res => res.json())
 
     } else {
-      console.log("not in cart")
       this.setState({ currentCart: [...this.state.currentCart, item] })
 
       let newItem = {
@@ -128,7 +121,6 @@ class App extends Component {
   }
 
   removeFromCart = (oldItem) => {
-    console.log(oldItem.name + " removed! " + oldItem.id)
     let newCart = this.state.currentCart.filter(item => item !== oldItem)
     this.setState({ currentCart: newCart })
     let delCartItem = this.state.cartItems.find(cartItem => cartItem.cart_id === this.state.user.cart.id && cartItem.item_id === oldItem.id)
@@ -149,7 +141,7 @@ class App extends Component {
     return (
       <div >
         <img className="logo" src="https://i.imgur.com/eaqGD3H.jpg" alt="Rose Apothecary Logo" width="500" />
-        <div className="background-image"></div>
+        <div className="rose-border"/>
         <Router>
           <Navbar logOut={this.logOut} loggedIn={this.state.loggedIn} />
           {this.displayGreeting()}

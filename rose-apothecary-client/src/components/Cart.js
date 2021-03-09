@@ -4,10 +4,26 @@ import { Redirect } from 'react-router-dom'
 
 class Cart extends Component {
 
+
+    calculateTotal = () => {
+        console.log("hit")
+        let newTotal = 0
+        this.props.currentCart.map( item => {
+            let cartItem = this.props.cartItems.find(cartItem => cartItem.cart_id === this.props.user.cart.id && cartItem.item_id === item.id)
+            let quantity = cartItem.quantity
+            let subTotal = parseFloat(item.cost) * quantity
+            newTotal += subTotal
+        })
+        
+        newTotal = (Math.round(newTotal * 100) / 100).toFixed(2)
+        return newTotal
+    }
+
     render() {
 
         return(
-            <div>
+            <div className="cart-container">
+                <h1 className="cart-title">Your Shopping Cart</h1>
                 {this.props.loggedIn ?
                     this.props.currentCart.map(item => <CartItem setCurrentItem={this.props.setCurrentItem} user={this.props.user} cartItems={this.props.cartItems} removeFromCart={this.props.removeFromCart} key={item.id} item={item}/>)
                 :
@@ -16,6 +32,7 @@ class Cart extends Component {
                         <Redirect to="/login"/>
                     )
                 }   
+                <h2 className="cart-total">Total: {this.calculateTotal()}</h2>
             </div>
         )
     }
