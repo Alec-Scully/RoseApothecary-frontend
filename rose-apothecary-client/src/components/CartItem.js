@@ -27,7 +27,7 @@ class CartItem extends Component {
             <div className="card" >
                 <div onClick={() => this.handleClick()}>
                     <img src={this.props.item.image} alt={this.props.item.name + "image"} className="item-image"/>
-                    <h2>{this.props.item.name}</h2>
+                    <h2 className="item-name">{this.props.item.name}</h2>
                     <h4>{"$" + this.props.item.cost}</h4>
                     {this.quantity()}
                 </div>

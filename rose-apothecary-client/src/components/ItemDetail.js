@@ -26,7 +26,7 @@ class ItemDetail extends Component {
                         <h2>{"$" + this.props.item.cost}</h2>
                         <h4>Category:</h4>
                         <ul>
-                            {this.props.item.category.map(category => <li><p>&emsp;{category}</p></li>)}
+                            {this.props.item.category?.map(category => <li key={category.id}><p>&emsp;{category}</p></li>)}
                         </ul>
                         <br/>
                         <h4>Description:</h4>

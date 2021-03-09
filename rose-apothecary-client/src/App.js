@@ -182,7 +182,7 @@ class App extends Component {
             <Cart setCurrentItem={this.setCurrentItem} loggedIn={this.state.loggedIn} user={this.state.user} cartItems={this.state.cartItems} removeFromCart={this.removeFromCart} currentCart={this.state.currentCart} />
           </Route>
 
-          <Route path="/item" render={routerProps => <ItemDetail {...routerProps} item={this.state.currentItem} addToCart={this.addToCart} loggedIn={this.state.loggedIn} />} />
+          <Route path="/item/" render={routerProps => <ItemDetail {...routerProps} item={this.state.currentItem} addToCart={this.addToCart} loggedIn={this.state.loggedIn} />} />
 
         </Router>
         <div className="footer">
