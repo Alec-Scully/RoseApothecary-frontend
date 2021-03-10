@@ -421,8 +421,8 @@ nav {
 
 .cart-card button {
   position: relative;
-  top: -175px;
-  left: 28%;
+  top: -178px;
+  left: 35%;
   font-family: Verdana;
   background-color: white;
   color: black;
@@ -448,19 +448,130 @@ nav {
   font-family: Verdana;
 }
 
+.update-cart-field {
+  position: relative;
+  text-align: center;
+  padding: 4px 8px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  font-family: Verdana;
+  border-radius : 8px;
+}
+
+.update-cart-quantity {
+  position: relative;
+  top: 0px;
+  left: 0%;
+  font-family: Verdana;
+  background-color: white;
+  color: black;
+  font-family: Verdana;
+  font-size: 16px;
+  border-radius : 8px;
+  font-weight: bold;
+  /* text-transform: uppercase; */
+  transition-duration: 0.4s;
+}
+
 /* ****************************************** */
 
 
 
 
-footer {
+/* ************* About Styling ************** */
+
+.about-container {
+  font-family: Verdana;
+  text-align: center;
+}
+
+.about-header {
+  /* position: relative; */
+  width: 100%;
+}
+
+.about-header img {
+  background-image: url(https://static1.srcdn.com/wordpress/wp-content/uploads/2019/05/Schitts-Creek-Rose-Apothecary.jpg?q=50&fit=crop&w=740&h=389);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100vw;
+  
+}
+
+.about-mission {
+  width: 75%;
+  left: 10%;
+  padding: 3rem;
   position: relative;
+  letter-spacing: .2em;
+  line-height: 1.6;
+}
+
+.about-d-p p {
+  position: relative;
+  width: 95%;
+  line-height: 175%;
+  padding: 3rem;
+}
+
+.about-d-p img{
+  position: relative;
+  width: 100%;
+  border-radius : 8px;
+}
+
+.about-david {
+  display: flex;
+}
+
+.about-david-text-container {
+  flex: 0 0 50%;
+  position: relative;
+  top: 7rem;
+}
+
+.about-david-text-container h1 {
+  position: relative;
+  width: 97%;
+}
+
+.about-david-image-container {
+  flex: 1;
+}
+
+
+
+.about-patrick {
+  display: flex;
+}
+
+.about-patrick-text-container {
+  flex: 1;
+  position: relative;
+  top: 7rem;
+}
+
+.about-patrick-image-container {
+  flex: 0 0 50%;
+}
+
+
+/* ****************************************** */
+
+
+
+
+.footer {
+  position: absolute;
   left: 0;
-  bottom: 0;
+  bottom: -1000;
   width: 100%;
   background-color: black;
   color: white;
   text-align: center;
-  min-height: 8vh;
+  min-height: 12vh;
   font-family: 'verdana';
 }

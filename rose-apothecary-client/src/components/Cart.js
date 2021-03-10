@@ -25,7 +25,7 @@ class Cart extends Component {
             <div className="cart-container">
                 <h1 className="cart-title">Your Shopping Cart</h1>
                 {this.props.loggedIn ?
-                    this.props.currentCart.map(item => <CartItem setCurrentItem={this.props.setCurrentItem} user={this.props.user} cartItems={this.props.cartItems} removeFromCart={this.props.removeFromCart} key={item.id} item={item}/>)
+                    this.props.currentCart.map(item => <CartItem updateQuantity={this.props.updateQuantity} setCurrentItem={this.props.setCurrentItem} user={this.props.user} cartItems={this.props.cartItems} removeFromCart={this.props.removeFromCart} key={item.id} item={item}/>)
                 :
                     (
                         alert("Please log in or sign up to see your cart"),

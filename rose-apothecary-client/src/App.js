@@ -171,15 +171,16 @@ class App extends Component {
           </Route>
 
           <Route exact path="/cart">
-            <Cart setCurrentItem={this.setCurrentItem} loggedIn={this.state.loggedIn} user={this.state.user} cartItems={this.state.cartItems} removeFromCart={this.removeFromCart} currentCart={this.state.currentCart} />
+            <Cart updateQuantity={this.updateQuantity} setCurrentItem={this.setCurrentItem} loggedIn={this.state.loggedIn} user={this.state.user} cartItems={this.state.cartItems} removeFromCart={this.removeFromCart} currentCart={this.state.currentCart} />
           </Route>
 
           <Route path="/item/" render={routerProps => <ItemDetail {...routerProps} item={this.state.currentItem} addToCart={this.addToCart} loggedIn={this.state.loggedIn} />} />
 
         </Router>
-        <footer>
-              <p>this is my footer</p>
-        </footer>
+        <div className="footer">
+              {/* <p>this is my footer</p> */}
+              {/* <img src="https://www.artistshot.com/assets-3/images/admin/designs/286115/286115-250x250.png" alt="second logo" /> */}
+        </div>
       </div>
     );
   }
