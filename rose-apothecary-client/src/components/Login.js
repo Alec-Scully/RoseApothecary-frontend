@@ -1,5 +1,6 @@
 // src/Login.js
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 
 class Login extends Component {
 
@@ -45,15 +46,18 @@ class Login extends Component {
       <div className="login-container">
         <div className="login-card">
           <form onSubmit={this.login}>
-            <h1>Login</h1>
+            <h2>Please join the line by logging in!</h2>
             <div>
-              <input onChange={this.handleChange} type="text" name="username" placeholder="Username" />
+              <input className="login-form-field" onChange={this.handleChange} type="text" name="username" placeholder="Username" />
             </div>
             <div>
-              <input onChange={this.handleChange} type="password" name="password" placeholder="Password" />
+              <input className="login-form-field" onChange={this.handleChange} type="password" name="password" placeholder="Password" />
             </div>
-            <input type="submit" value="Login" />
+            <input className="login-form-submit" type="submit" value="Login" />
           </form>
+          <br/>
+          <p>Don't have an account?</p>
+          <p>Feel free to <Link to="/signup">sign up here!</Link></p>
         </div>
       </div>
     );

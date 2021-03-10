@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect } from "react-router-dom"
+import { Redirect, Link } from "react-router-dom"
 
 class Signup extends Component {
 
@@ -28,11 +28,11 @@ class Signup extends Component {
     const { first_name, last_name, username, email, password } = this.state
 
     let user = {
-        first_name: first_name,
-        last_name: last_name,
-        username: username,
-        email: email,
-        password: password
+      first_name: first_name,
+      last_name: last_name,
+      username: username,
+      email: email,
+      password: password
     }
 
     fetch("http://localhost:3000/users", {
@@ -54,37 +54,35 @@ class Signup extends Component {
 
   render() {
     return (
-      <div className="signup-area">
+      <div >
         {this.state.created ? (
           <Redirect to="/login" />
         ) : (
             <div className="signup-container">
               <div><p>{this.state.errorMessage}</p></div>
               <div className="signup-card">
-                <form className="signup-form" onSubmit={this.createUser}>
-                  <h1>Sign Up</h1>
+                <form onSubmit={this.createUser}>
+                  <h1>Please join our Locally Sourced and Hand Crafted Family!</h1>
+                  <br />
                   <div>
-                    <input onChange={this.handleChange} type="text" name="first_name" placeholder="First Name" />
+                    <input className="signup-form-field" onChange={this.handleChange} type="text" name="first_name" placeholder="First Name" />
                   </div>
-                  <br/>
                   <div>
-                    <input onChange={this.handleChange} type="text" name="last_name" placeholder="Last Name" />
+                    <input className="signup-form-field" onChange={this.handleChange} type="text" name="last_name" placeholder="Last Name" />
                   </div>
-                  <br/>
                   <div>
-                    <input onChange={this.handleChange} type="text" name="email" placeholder="Email" />
+                    <input className="signup-form-field" onChange={this.handleChange} type="text" name="email" placeholder="Email" />
                   </div>
-                  <br/>
                   <div>
-                    <input onChange={this.handleChange} type="text" name="username" placeholder="Username" />
+                    <input className="signup-form-field" onChange={this.handleChange} type="text" name="username" placeholder="Username" />
                   </div>
-                  <br/>
                   <div>
-                    <input onChange={this.handleChange} type="password" name="password" placeholder="Password" />
+                    <input className="signup-form-field" onChange={this.handleChange} type="password" name="password" placeholder="Password" />
                   </div>
-                  <br/>
-                  <input type="submit" value="Sign Up" />
+                  <input className="signup-form-submit" type="submit" value="Sign Up" />
                 </form>
+                <br />
+                <p>Already signed up? <Link to="/login">Please log in!</Link></p>
               </div>
             </div>
           )}

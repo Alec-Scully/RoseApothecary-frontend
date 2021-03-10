@@ -23,6 +23,10 @@ code {
   text-align: center;
 }
 
+
+
+/* ************* NavBar Styling ************* */
+
 nav {
   display: flex;
   justify-content: space-around;
@@ -42,6 +46,8 @@ nav {
 .sticky-nav {
   position: sticky;
   top: 0;
+  z-index: 1000;
+
 }
 
 .nav-links {
@@ -86,14 +92,20 @@ nav {
   color: white;
 }
 
+/* ****************************************** */
+
+
+
+
+/* *********** Item Card Styling ************ */
+
 .card {
-  /* box-sizing: border-box; */
-  /* text-align: center; */
   padding: 1rem;
   width: 20rem;
   height: 25rem;
   display: inline-block;
   margin: 1rem 2rem;
+  cursor: pointer;
   /* border: grey solid 1px;
   box-shadow: 3px 4px; */
 }
@@ -123,16 +135,11 @@ nav {
   border-radius : 8px;
 }
 
-.show {
-
+.item-name {
+  height: 3rem;
 }
 
-.detailImg {
-  border-radius : 8px;
-  max-width: 50%;
-}
-
-.background-image {
+.rose-border {
   background-image: url(https://i.imgur.com/ks3flCH.jpg);
   background-size: contain;
   background-repeat: repeat-x;
@@ -148,62 +155,111 @@ nav {
   padding-left: 30px;
   text-align: center;
 }
+/* ****************************************** */
 
-.signup-form {
+
+
+
+/* ********* Item Show Page Styling ********* */
+.show {
+  /* width: 65rem;
+  height: 65rem; */
+  display: flex;
+  padding: 5rem;
+}
+
+.detail-img-container{
+  /* width: 30%;
+  top: 30%;
+  float: left; */
+  flex: 0 0 65%
+}
+
+.detail-text-container{
   /* width: 50%;
-  height: 100%; */
-  float: left;
-}
-
-.signup-image {
   float: right;
-  border-radius: 9%;
-  width: 50%;
-}
-
-.signup-card {
-  width: 35%;
-  height: 25rem;
-  display: block;
-  margin: 1rem 2rem;
-  border: grey solid 1px;
-  box-shadow: 3px 4px;
-  border-radius: 8px;
-  text-align: center;
-  background-color: white;
-}
-
-.signup-container {
-  margin-left: auto;
-  margin-right: auto;
-  padding: 3rem;
-  font-family: Verdana;
-  background-image: url(https://i.imgur.com/WuHQzJ4.png);
-  background-size:cover;
-  background-repeat: no-repeat;
-  margin: 0;
-  height: 100vh;
-  width: 100vw;
-}
-
-.signup-area {
-  text-align: center;
+  height: 50%; */
+  flex: 1;
+  /* text-align: center; */
+  display: flex;
+  justify-content: center;
   align-items: center;
 }
 
-form {
-  display: inline-block;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: left;
-
+.detail-img {
+  border-radius : 8px;
+  width: 550px;
+  position: relative;
+  left: 25%;
 }
+
+
+.detail-name {
+  position: relative;
+  width: 75%;
+  right: 25%;
+  top: 15%;
+  font-family: Verdana;
+  text-align: center;
+}
+
+.detail-cost {
+  position: relative;
+  right: 37%;
+  top: 21%;
+  font-family: Verdana;
+  text-align: center;
+  /* justify-content: center; */
+}
+
+.detail-description {
+  position: relative;
+  width: 75%;
+  right: 25%;
+  top: 25%;
+  font-family: Verdana;
+  text-align: center;
+}
+
+.detail-category {
+  position: relative;
+  right: 25%;
+  top: 35%;
+  font-family: Verdana;
+  padding-bottom: 10px;
+}
+
+.detail-button {
+  background-color: white;
+  color: black;
+  font-family: Verdana;
+  font-size: 18px;
+  border-radius : 8px;
+  font-weight: bold;
+  transition-duration: 0.4s;
+  height: 40px;
+  width: 75%;
+  right: 25%;
+  top: 30%;
+  position: relative;
+}
+
+.detail-button:hover {
+  background-color: black;
+  color: white;
+}
+
+/* ****************************************** */
+
+
+
+
+/* ************* Login Styling ************** */
 
 .login-container {
   background-image: url(https://i.imgur.com/c2CnEx7.png);
-  background-size:cover;
+  background-size: cover;
   background-repeat: no-repeat;
-  margin: 0;
   height: 100vh;
   width: 100vw;
 }
@@ -212,8 +268,8 @@ form {
   box-sizing: border-box;
   text-align: center;
   padding: 1rem;
-  width: 20rem;
-  height: 25rem;
+  width: 300px;
+  height: 350px;
   display: inline-block;
   margin: 1rem 2rem;
   border: grey solid 1px;
@@ -221,19 +277,301 @@ form {
   background-color: white;
   border-radius: 8px;
   position: relative;
-  top: 9rem;
-  left: 10rem;
+  top: 27%;
+  left: 20%;
+  font-family: Verdana;
 }
 
-.footer {
+.login-card h2 {
+  text-align: center;
+  padding-bottom: 1rem;
+}
+
+.login-form-field {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  font-family: Verdana;
+  border-radius : 8px;
+}
+
+.login-form-submit {
+  background-color: black;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  font-family: Verdana;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius : 8px;
+}
+
+.login-form-submit:hover {
+  opacity: 0.8;
+}
+
+/* ****************************************** */
+
+
+
+
+/* ************* Signup Styling ************* */
+
+.signup-container {
+  background-image: url(https://i.imgur.com/WuHQzJ4.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100vw;
+  text-align: center;
+}
+
+.signup-card {
+  box-sizing: border-box;
+  text-align: center;
+  padding: 1rem;
+  width: 500px;
+  height: 600px;
+  display: inline-block;
+  margin: 10rem;
+  border: grey solid 1px;
+  box-shadow: 3px 4px;
+  background-color: white;
+  border-radius: 8px;
+  font-family: Verdana;
+}
+
+.signup-form-field {
+  width: 100%;
+  padding: 12px 7px;
+  margin: 9px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  font-family: Verdana;
+  border-radius : 8px;
+}
+
+.signup-form-submit {
+  background-color: black;
+  color: white;
+  padding: 14px 20px;
+  margin: 10px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  font-family: Verdana;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius : 8px;
+}
+
+.signup-form-submit:hover {
+  opacity: 0.8;
+}
+
+.signup-card h1 {
+  text-align: center;
+}
+
+/* ****************************************** */
+
+
+
+
+/* ************** Cart Styling ************** */
+
+.cart-title {
+  padding: 2rem;
+}
+
+.cart-card {
+  padding: 1rem;
+  width: 96.5%;
+  height: 14rem;
+  display: inline-block;
+  margin: 1rem 2rem;
+  border: grey solid 1px;
+  box-shadow: 3px 4px;
+}
+
+.cart-item-name {
   position: relative;
+  top: -155px;
+  left: 20%;
+  font-family: Verdana;
+}
+
+.cart-link {
+  cursor: pointer;
+}
+
+.cart-cost {
+  position: relative;
+  top: -155px;
+  left: 90%;
+  font-family: Verdana;
+}
+
+.cart-card button {
+  position: relative;
+  top: -178px;
+  left: 35%;
+  font-family: Verdana;
+  background-color: white;
+  color: black;
+  font-family: Verdana;
+  font-size: 16px;
+  border-radius : 8px;
+  font-weight: bold;
+  /* text-transform: uppercase; */
+  transition-duration: 0.4s;
+}
+
+.cart-quantity {
+  position: relative;
+  top: -155px;
+  left: 20%;
+  font-family: Verdana;
+}
+
+.cart-total {
+  position: relative;
+  bottom: 40px;
+  left: 84%;
+  font-family: Verdana;
+}
+
+.update-cart-field {
+  position: relative;
+  text-align: center;
+  padding: 4px 8px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  font-family: Verdana;
+  border-radius : 8px;
+}
+
+.update-cart-quantity {
+  position: relative;
+  top: 0px;
+  left: 0%;
+  font-family: Verdana;
+  background-color: white;
+  color: black;
+  font-family: Verdana;
+  font-size: 16px;
+  border-radius : 8px;
+  font-weight: bold;
+  /* text-transform: uppercase; */
+  transition-duration: 0.4s;
+}
+
+/* ****************************************** */
+
+
+
+
+/* ************* About Styling ************** */
+
+.about-container {
+  font-family: Verdana;
+  text-align: center;
+}
+
+.about-header {
+  /* position: relative; */
+  width: 100%;
+}
+
+.about-header img {
+  background-image: url(https://static1.srcdn.com/wordpress/wp-content/uploads/2019/05/Schitts-Creek-Rose-Apothecary.jpg?q=50&fit=crop&w=740&h=389);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100vw;
+  
+}
+
+.about-mission {
+  width: 75%;
+  left: 10%;
+  padding: 3rem;
+  position: relative;
+  letter-spacing: .2em;
+  line-height: 1.6;
+}
+
+.about-d-p p {
+  position: relative;
+  width: 95%;
+  line-height: 175%;
+  padding: 3rem;
+}
+
+.about-d-p img{
+  position: relative;
+  width: 100%;
+  border-radius : 8px;
+}
+
+.about-david {
+  display: flex;
+}
+
+.about-david-text-container {
+  flex: 0 0 50%;
+  position: relative;
+  top: 7rem;
+}
+
+.about-david-text-container h1 {
+  position: relative;
+  width: 97%;
+}
+
+.about-david-image-container {
+  flex: 1;
+}
+
+
+
+.about-patrick {
+  display: flex;
+}
+
+.about-patrick-text-container {
+  flex: 1;
+  position: relative;
+  top: 7rem;
+}
+
+.about-patrick-image-container {
+  flex: 0 0 50%;
+}
+
+
+/* ****************************************** */
+
+
+
+
+.footer {
+  position: absolute;
   left: 0;
-  bottom: 0;
+  bottom: -1000;
   width: 100%;
   background-color: black;
   color: white;
   text-align: center;
-  align-items: center;
-  min-height: 8vh;
+  min-height: 12vh;
   font-family: 'verdana';
 }
