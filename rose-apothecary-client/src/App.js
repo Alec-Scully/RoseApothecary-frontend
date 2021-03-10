@@ -8,6 +8,7 @@ import Home from "./components/Home";
 import About from "./components/About";
 import Cart from "./components/Cart";
 import ItemDetail from "./components/ItemDetail";
+import Checkout from "./components/Checkout";
 
 class App extends Component {
   state = {
@@ -144,7 +145,7 @@ class App extends Component {
         <div className="rose-border"/>
         <Router>
           <Navbar logOut={this.logOut} loggedIn={this.state.loggedIn} />
-          {this.displayGreeting()}
+          {/* {this.displayGreeting()} */}
 
           <Route exact path="/">
             <Home setCurrentItem={this.setCurrentItem} loggedIn={this.state.loggedIn} addToCart={this.addToCart} items={this.state.items} />
@@ -175,6 +176,10 @@ class App extends Component {
           </Route>
 
           <Route path="/item/" render={routerProps => <ItemDetail {...routerProps} item={this.state.currentItem} addToCart={this.addToCart} loggedIn={this.state.loggedIn} />} />
+
+          <Route path="/checkout">
+            <Checkout user={this.state.user}/>
+          </Route>
 
         </Router>
         <div className="footer">

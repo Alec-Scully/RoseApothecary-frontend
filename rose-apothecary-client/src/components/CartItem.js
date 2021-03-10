@@ -23,7 +23,7 @@ class CartItem extends Component {
             <h4 className="cart-quantity">Quantity:
                 <form onSubmit={(e) => this.updateQuantity(e, this.props.item, this.state.newQuantity)}>
                     <div>
-                        <input className="update-cart-field" onChange={this.handleChange} type="number" id="quantity" name="quantity" min="0" max="100" step="1" value={parseInt(updateCartItem.quantity)}/>
+                        <input className="update-cart-field" onChange={this.handleChange} type="text" id="quantity" name="quantity" min="0" max="100" step="1" value={updateCartItem.quantity}/>
                     </div>
                     <div>
                         <input className="update-cart-quantity" type="submit" value="Update Quantity" />

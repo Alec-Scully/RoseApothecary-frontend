@@ -23,7 +23,7 @@ class ItemDetail extends Component {
                     <img className="detail-img" src={this.props.item.image} alt={this.props.item.name + "image"} />
                     {/* <img src={this.props.item.image} alt={this.props.item.name + "image"} /> */}
                 </div>
-                <div classname="detail-text-container">
+                <div className="detail-text-container">
                     <h1 className="detail-name">{this.props.item.name}</h1>
                     <h2 className="detail-cost">{"$" + this.props.item.cost}</h2>
                     <br />

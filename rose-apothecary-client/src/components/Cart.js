@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import CartItem from './CartItem'
-import { Redirect } from 'react-router-dom'
+import { Redirect, Link } from 'react-router-dom'
 
 class Cart extends Component {
 
 
     calculateTotal = () => {
-        console.log("hit")
         let newTotal = 0
         this.props.currentCart.map( item => {
             let cartItem = this.props.cartItems.find(cartItem => cartItem.cart_id === this.props.user.cart.id && cartItem.item_id === item.id)
@@ -33,6 +32,7 @@ class Cart extends Component {
                     )
                 }   
                 <h2 className="cart-total">Total: ${this.calculateTotal()}</h2>
+                <Link to="/checkout" className="checkout">Checkout</Link>
             </div>
         )
     }

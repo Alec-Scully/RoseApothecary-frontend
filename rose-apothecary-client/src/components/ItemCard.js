@@ -10,9 +10,12 @@ class ItemCard extends Component {
 
     handleAddToCart = () => {
         this.props.loggedIn ?
-            this.props.addToCart(this.props.item)
+                this.props.addToCart(this.props.item)
             :
-            alert("Please log in or sign up to add to your cart!")
+                (
+                    alert("Please log in or sign up to add to your cart!")
+                    // <Redirect to="/login"/>
+                )
     }
 
     handleClick = () => {
@@ -33,7 +36,7 @@ class ItemCard extends Component {
                         <h2 className="item-name">{this.props.item.name}</h2>
                         <br />
                         <h3>{"$" + this.props.item.cost}</h3>
-                        <br/>
+                        <br />
                     </div>
                     <button className="item-button" onClick={() => this.handleAddToCart()}>Add to Cart</button>
                 </div>
