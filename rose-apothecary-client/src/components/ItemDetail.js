@@ -18,23 +18,22 @@ class ItemDetail extends Component {
 
     render() {
         return (
-            <div>
-                <div className="show">
-                    <div >
-                        <img className="detail-img" src={this.props.item.image} alt={this.props.item.name + "image"} />
-                        <h1>{this.props.item.name}</h1>
-                        <h2>{"$" + this.props.item.cost}</h2>
-                        <h4>Category:</h4>
-                        <ul>
-                            {this.props.item.category?.map(category => <li key={category.id}><p>&emsp;{category}</p></li>)}
-                        </ul>
-                        <br/>
-                        <h4>Description:</h4>
-                        <p>{this.props.item.description}</p>
-
-                    </div>
+            <div className="show">
+                <div className="detail-img-container">
+                    <img className="detail-img" src={this.props.item.image} alt={this.props.item.name + "image"} />
+                    {/* <img src={this.props.item.image} alt={this.props.item.name + "image"} /> */}
+                </div>
+                <div classname="detail-text-container">
+                    <h1 className="detail-name">{this.props.item.name}</h1>
+                    <h2 className="detail-cost">{"$" + this.props.item.cost}</h2>
+                    <br />
+                    <p className="detail-description">{this.props.item.description}</p>
+                    <br />
+                    <button className="detail-button" onClick={() => this.handleAddToCart()}>Add to Cart</button>
                     <br/>
-                    <button onClick={() => this.handleAddToCart()}>Add to Cart</button>
+                    <br/>
+                    <h3 className="detail-category">Categories:</h3>
+                    <p className="detail-category">{this.props.item.category.join(', ')}</p>
                 </div>
             </div>
         )

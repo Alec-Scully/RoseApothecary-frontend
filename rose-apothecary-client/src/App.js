@@ -177,9 +177,9 @@ class App extends Component {
           <Route path="/item/" render={routerProps => <ItemDetail {...routerProps} item={this.state.currentItem} addToCart={this.addToCart} loggedIn={this.state.loggedIn} />} />
 
         </Router>
-        <div className="footer">
+        <footer>
               <p>this is my footer</p>
-        </div>
+        </footer>
       </div>
     );
   }

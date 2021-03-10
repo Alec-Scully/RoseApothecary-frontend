@@ -32,7 +32,7 @@ class Cart extends Component {
                         <Redirect to="/login"/>
                     )
                 }   
-                <h2 className="cart-total">Total: {this.calculateTotal()}</h2>
+                <h2 className="cart-total">Total: ${this.calculateTotal()}</h2>
             </div>
         )
     }
