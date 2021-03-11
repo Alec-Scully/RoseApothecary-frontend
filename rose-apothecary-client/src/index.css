@@ -169,19 +169,11 @@ nav {
 }
 
 .detail-img-container{
-  /* width: 30%;
-  top: 30%;
-  float: left; */
-  flex: 0 0 65%
+  flex: 0 0 50%
 }
 
 .detail-text-container{
-  /* width: 50%;
-  float: right;
-  height: 50%; */
   flex: 1;
-  /* text-align: center; */
-  display: flex;
   justify-content: center;
   align-items: center;
 }
@@ -196,37 +188,36 @@ nav {
 
 .detail-name {
   position: relative;
-  width: 75%;
-  right: 25%;
-  top: 15%;
+  left: -10%;
+  top: 10%;
   font-family: Verdana;
   text-align: center;
 }
 
 .detail-cost {
   position: relative;
-  right: 37%;
-  top: 21%;
+  left: -10%;
+  top: 16%;
   font-family: Verdana;
   text-align: center;
-  /* justify-content: center; */
 }
 
 .detail-description {
   position: relative;
-  width: 75%;
-  right: 25%;
-  top: 25%;
+  width: 70%;
+  left: 5%;
+  top: 20%;
   font-family: Verdana;
   text-align: center;
 }
 
 .detail-category {
   position: relative;
-  right: 25%;
-  top: 35%;
+  width: 100%;
+  left: -9%;
+  top: 38%;
   font-family: Verdana;
-  padding-bottom: 10px;
+  text-align: center;
 }
 
 .detail-button {
@@ -238,8 +229,8 @@ nav {
   font-weight: bold;
   transition-duration: 0.4s;
   height: 40px;
-  width: 75%;
-  right: 25%;
+  width: 50%;
+  left: 15%;
   top: 30%;
   position: relative;
 }
