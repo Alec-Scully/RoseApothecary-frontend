@@ -1,7 +1,8 @@
-# RoseApothecary-frontend
-## Welcome to the Rose Apothecary!
+# Welcome to the Rose Apothecary!
 
 ![Rose Apothecary Logo](https://static.wikia.nocookie.net/schitts-creek/images/7/75/Roseapothlogo.jpg/revision/latest/scale-to-width-down/1000?cb=20181108044017)
+
+Video demo can be found [here](https://www.youtube.com/watch?v=EYIIW8qqfuY).
 
 This repo was the frontend of my [Flatiron School](https://flatironschool.com/) phase 5 capstone project. If you are looking for the backend of this project, you can find it here:
 
