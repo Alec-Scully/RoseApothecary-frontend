@@ -1,5 +1,5 @@
 # RoseApothecary-frontend
-#Welcome to the Rose Apothecary!
+## Welcome to the Rose Apothecary!
 
 ![Rose Apothecary Logo](https://static.wikia.nocookie.net/schitts-creek/images/7/75/Roseapothlogo.jpg/revision/latest/scale-to-width-down/1000?cb=20181108044017)
 
@@ -15,17 +15,17 @@ npm install
 npm start
 ```
 
-##User Stories:
-  *A user should be able to see all the items in the store upon loading the page
-  *A user should be able to click an item and be taken to that specific items page
-  *A user should be able to sign-up or log-in/logout
-    *A user should be able to automatically log-in if they have done so previously and not logged-out on the same device.
-  *A user should be able to add, update, or remove items from their own personal cart
+## User Stories:
+  * A user should be able to see all the items in the store upon loading the page
+  * A user should be able to click an item and be taken to that specific items page
+  * A user should be able to sign-up or log-in/logout
+  * A user should be able to automatically log-in if they have done so previously and not logged-out on the same device.
+  * A user should be able to add, update, or remove items from their own personal cart
   
 This frontend is made using React.
 
 I decided to create this app to give myself a challenge. CSS was not a skill of mine prior to this project, and I tried to make this website look and feel as authentic as possible.
 
 If you'd like to connect with me you can find me here:
-*https://www.linkedin.com/in/alec-scully/
-*scullyalec@gmail.com
+* https://www.linkedin.com/in/alec-scully/
+* scullyalec@gmail.com
