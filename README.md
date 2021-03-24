@@ -21,6 +21,8 @@ npm start
   *A user should be able to sign-up or log-in/logout
     *A user should be able to automatically log-in if they have done so previously and not logged-out on the same device.
   *A user should be able to add, update, or remove items from their own personal cart
+  
+This frontend is made using React.
 
 I decided to create this app to give myself a challenge. CSS was not a skill of mine prior to this project, and I tried to make this website look and feel as authentic as possible.
 
