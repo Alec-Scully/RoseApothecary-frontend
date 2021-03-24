@@ -20,7 +20,7 @@ npm start
   * A user should be able to see all the items in the store upon loading the page
   * A user should be able to click an item and be taken to that specific items page
   * A user should be able to sign-up or log-in/logout
-  * A user should be able to automatically log-in if they have done so previously and not logged-out on the same device.
+    * A user should be able to automatically log-in if they have done so previously and not logged-out on the same device.
   * A user should be able to add, update, or remove items from their own personal cart
   
 This frontend is made using React.
